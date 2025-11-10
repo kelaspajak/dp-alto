@@ -54,6 +54,8 @@
         </section>
     {{/author}}
 
+{{#get "posts" filter="primary_tag:layanan" include="tags,authors" as |posts|}}
+
     <div class="post-feed">
         {{#foreach posts}}
             {{> "loop"}}
@@ -61,6 +63,6 @@
     </div>
 
     {{pagination}}
-
+{{/get}}
 </main>
 </div>

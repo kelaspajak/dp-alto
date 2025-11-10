@@ -1,0 +1,10 @@
+routes:
+
+collections:
+  /:
+    permalink: "/{slug}/"
+    template: index
+
+taxonomies:
+  tag: "/topik/{slug}/"
+  author: "/{slug}/"
