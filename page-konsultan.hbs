@@ -1,0 +1,95 @@
+{{!< default}}
+
+<style>
+    .author-grid {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr)); /* Default: 1 column */
+        gap: 20px;
+    }
+
+    @media (min-width: 40rem) {
+        .author-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr)); /* >= 40rem: 2 columns */
+        }
+    }
+
+    @media (min-width: 48rem) {
+        .author-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr)); /* >= 48rem: 3 columns */
+        }
+    }
+
+    .author-card {
+        border: 1px solid #eee;
+        padding: 20px;
+        text-align: center;
+    }
+    .author-image {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+</style>
+
+<div class="content-area">
+    <main class="site-main">
+        <article class="gh-article post">
+            <header class="gh-article-header">
+                <h1 class="gh-article-title">Our Consultants</h1>
+            </header>
+            <div class="gh-article-content">
+                {{#get 'authors' include='count.posts'}}
+                    <div class="author-grid">
+                        {{#foreach authors}}
+                            <div class="author-card">
+                                <a href='{{ url }}'>
+                                    {{#if profile_image}}
+                                        <img class="author-image" src="{{img_url profile_image size="s"}}" alt="{{name}}" loading="lazy">
+                                    {{/if}}
+                                    <h2 class="term-name">{{name}}</h2>
+                                </a>
+                                {{#if location}}
+                                    <div class="author-profile-location">📍 {{location}}</div>
+                                {{/if}}
+                                <div class="term-description">{{bio}}</div>
+                                <div class="gh-author-meta">
+                                    {{#if website}}
+                                        <a class="gh-author-website" href="{{website}}" target="_blank" rel="noopener">{{website}}</a>
+                                    {{/if}}
+                                    {{#if twitter}}
+                                        <a class="gh-author-social-link" href="{{social_url type="twitter"}}" target="_blank" rel="noopener">{{> icons/twitter}}</a>
+                                    {{/if}}
+                                    {{#if facebook}}
+                                        <a class="gh-author-social-link" href="{{social_url type="facebook"}}" target="_blank" rel="noopener">{{> icons/facebook}}</a>
+                                    {{/if}}
+                                    {{#if linkedin}}
+                                        <a class="gh-author-social-link" href="{{social_url type="linkedin"}}" target="_blank" rel="noopener">{{> icons/linkedin}}</a>
+                                    {{/if}}
+                                    {{#if bluesky}}
+                                        <a class="gh-author-social-link" href="{{social_url type="bluesky"}}" target="_blank" rel="noopener">{{> icons/bluesky}}</a>
+                                    {{/if}}
+                                    {{#if threads}}
+                                        <a class="gh-author-social-link" href="{{social_url type="threads"}}" target="_blank" rel="noopener">{{> icons/threads}}</a>
+                                    {{/if}}
+                                    {{#if mastodon}}
+                                        <a class="gh-author-social-link" href="{{social_url type="mastodon"}}" target="_blank" rel="noopener">{{> icons/mastodon}}</a>
+                                    {{/if}}
+                                    {{#if tiktok}}
+                                        <a class="gh-author-social-link" href="{{social_url type="tiktok"}}" target="_blank" rel="noopener">{{> icons/tiktok}}</a>
+                                    {{/if}}
+                                    {{#if youtube}}
+                                        <a class="gh-author-social-link" href="{{social_url type="youtube"}}" target="_blank" rel="noopener">{{> icons/youtube}}</a>
+                                    {{/if}}
+                                    {{#if instagram}}
+                                        <a class="gh-author-social-link" href="{{social_url type="instagram"}}" target="_blank" rel="noopener">{{> icons/instagram}}</a>
+                                    {{/if}}
+                                </div>
+                            </div>
+                        {{/foreach}}
+                    </div>
+                {{/get}}
+            </div>
+        </article>
+    </main>
+</div>
