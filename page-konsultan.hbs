@@ -1,6 +1,33 @@
 {{!< default}}
 
 <style>
+    .consultant-wrapper {
+        display: grid;
+        grid-template-areas:
+            "sidebar"
+            "main";
+        gap: 20px;
+        padding: 20px;
+    }
+
+    @media (min-width: 768px) {
+        .consultant-wrapper {
+            grid-template-columns: 250px 1fr;
+            grid-template-areas:
+                "sidebar main";
+        }
+    }
+
+    .consultant-sidebar {
+        grid-area: sidebar;
+        border: 1px solid #eee;
+        padding: 20px;
+    }
+
+    .consultant-main {
+        grid-area: main;
+    }
+
     .author-grid {
         display: grid;
         grid-template-columns: repeat(1, minmax(0, 1fr)); /* Default: 1 column */
@@ -15,7 +42,7 @@
 
     @media (min-width: 48rem) {
         .author-grid {
-            grid-template-columns: repeat(3, minmax(0, 1fr)); /* >= 48rem: 3 columns */
+            grid-template-columns: repeat(2, minmax(0, 1fr)); /* >= 48rem: 3 columns */
         }
     }
 
@@ -32,21 +59,33 @@
     }
 </style>
 
-<div class="content-area">
-    <main class="site-main gh-outer">
-        <article class="gh-article post">
-            <header class="gh-article-header">
-                <h1 class="gh-article-title">Our Consultants</h1>
-            </header>
-            <div class="gh-article-content">
-                {{#get 'authors' include='count.posts'}}
-                    <div class="author-grid">
-                        {{#foreach authors}}
-                            {{> "author-card" }}
-                        {{/foreach}}
-                    </div>
-                {{/get}}
-            </div>
-        </article>
-    </main>
+<div class="consultant-wrapper gh-outer">
+    <aside class="consultant-sidebar">
+        <h2>Filter by Expertise</h2>
+        <ul>
+            <li><a href="#">Technology</a></li>
+            <li><a href="#">Business</a></li>
+            <li><a href="#">Marketing</a></li>
+            <li><a href="#">Design</a></li>
+        </ul>
+    </aside>
+
+    <div class="consultant-main">
+        <main class="site-main">
+            <article class="gh-article post">
+                <header class="gh-article-header">
+                    <h1 class="gh-article-title">Our Consultants</h1>
+                </header>
+                <div class="gh-article-content">
+                    {{#get 'authors' include='count.posts'}}
+                        <div class="author-grid">
+                            {{#foreach authors}}
+                                {{> "author-card" }}
+                            {{/foreach}}
+                        </div>
+                    {{/get}}
+                </div>
+            </article>
+        </main>
+    </div>
 </div>
