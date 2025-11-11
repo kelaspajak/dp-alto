@@ -4,6 +4,7 @@
     .consultant-wrapper {
         display: grid;
         grid-template-areas:
+            "hero"
             "sidebar"
             "main";
         gap: 20px;
@@ -14,14 +15,38 @@
         .consultant-wrapper {
             grid-template-columns: 250px 1fr;
             grid-template-areas:
+                "hero hero"
                 "sidebar main";
         }
+    }
+
+    .hero {
+        grid-area: hero;
+        text-align: center; /* Center the title */
+        padding-bottom: 20px; /* Add some spacing below the hero */
     }
 
     .consultant-sidebar {
         grid-area: sidebar;
         border: 1px solid #eee;
         padding: 20px;
+    }
+
+    .consultant-sidebar ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .consultant-sidebar li a {
+        display: block;
+        padding: 5px 0;
+        text-decoration: none;
+        color: var(--ghost-accent-color);
+    }
+
+    .consultant-sidebar li a.active {
+        font-weight: bold;
     }
 
     .consultant-main {
@@ -42,7 +67,7 @@
 
     @media (min-width: 48rem) {
         .author-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr)); /* >= 48rem: 3 columns */
+            grid-template-columns: repeat(3, minmax(0, 1fr)); /* >= 48rem: 3 columns */
         }
     }
 
@@ -60,27 +85,28 @@
 </style>
 
 <div class="consultant-wrapper gh-outer">
+    <header class="gh-article-header hero">
+                    <h1 class="gh-article-title">Our Consultants</h1>
+    </header>
+
     <aside class="consultant-sidebar">
-        <h2>Filter by Expertise</h2>
+        <h2>Filter by Location</h2>
         <ul>
-            <li><a href="#">Technology</a></li>
-            <li><a href="#">Business</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Design</a></li>
+            {{! This list will be populated by JavaScript }}
         </ul>
     </aside>
 
     <div class="consultant-main">
         <main class="site-main">
             <article class="gh-article post">
-                <header class="gh-article-header">
-                    <h1 class="gh-article-title">Our Consultants</h1>
-                </header>
+                
                 <div class="gh-article-content">
-                    {{#get 'authors' include='count.posts'}}
+                    {{#get 'authors' include='count.posts' limit="all"}}
                         <div class="author-grid">
                             {{#foreach authors}}
-                                {{> "author-card" }}
+                                <div class="author-item" data-location="{{location}}">
+                                    {{> "author-card" }}
+                                </div>
                             {{/foreach}}
                         </div>
                     {{/get}}
@@ -89,3 +115,48 @@
         </main>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const authorElements = document.querySelectorAll('.author-item[data-location]');
+    const locations = new Set();
+    authorElements.forEach(author => {
+        const location = author.dataset.location;
+        if (location) {
+            locations.add(location);
+        }
+    });
+
+    const filterList = document.querySelector('.consultant-sidebar ul');
+    if (filterList) {
+        filterList.innerHTML = '<li><a href="#" class="active" data-location="all">All Locations</a></li>';
+
+        const sortedLocations = Array.from(locations).sort();
+
+        sortedLocations.forEach(location => {
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `<a href="#" data-location="${location}">${location}</a>`;
+            filterList.appendChild(listItem);
+        });
+
+        filterList.addEventListener('click', function (e) {
+            if (e.target.tagName === 'A') {
+                e.preventDefault();
+                const selectedLocation = e.target.dataset.location;
+
+                // Toggle active class
+                filterList.querySelectorAll('a').forEach(a => a.classList.remove('active'));
+                e.target.classList.add('active');
+
+                authorElements.forEach(author => {
+                    if (selectedLocation === 'all' || author.dataset.location === selectedLocation) {
+                        author.style.display = '';
+                    } else {
+                        author.style.display = 'none';
+                    }
+                });
+            }
+        });
+    }
+});
+</script>
