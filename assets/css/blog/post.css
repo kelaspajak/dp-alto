@@ -73,6 +73,19 @@
     font-family: var(--gh-font-body, var(--font-serif));
 }
 
+mark {
+    line-height: normal;
+    background: rgba(135, 131, 120, .15);
+    color: #EB5757;
+    border-radius: 4px;
+    padding: 0.2em 0.4em;
+    position: relative;
+    bottom: 0.065em;
+    font-size: 89%;
+    /*background-color: #FFF7C2;
+    color: #4F3422;*/
+}
+
 @media (max-width: 767px) {
     .post-media.large {
         margin-bottom: 30px;

@@ -33,7 +33,7 @@
 </style>
 
 <div class="content-area">
-    <main class="site-main">
+    <main class="site-main gh-outer">
         <article class="gh-article post">
             <header class="gh-article-header">
                 <h1 class="gh-article-title">Our Consultants</h1>
@@ -42,50 +42,7 @@
                 {{#get 'authors' include='count.posts'}}
                     <div class="author-grid">
                         {{#foreach authors}}
-                            <div class="author-card">
-                                <a href='{{ url }}'>
-                                    {{#if profile_image}}
-                                        <img class="author-image" src="{{img_url profile_image size="s"}}" alt="{{name}}" loading="lazy">
-                                    {{/if}}
-                                    <h2 class="term-name">{{name}}</h2>
-                                </a>
-                                {{#if location}}
-                                    <div class="author-profile-location">📍 {{location}}</div>
-                                {{/if}}
-                                <div class="term-description">{{bio}}</div>
-                                <div class="gh-author-meta">
-                                    {{#if website}}
-                                        <a class="gh-author-website" href="{{website}}" target="_blank" rel="noopener">{{website}}</a>
-                                    {{/if}}
-                                    {{#if twitter}}
-                                        <a class="gh-author-social-link" href="{{social_url type="twitter"}}" target="_blank" rel="noopener">{{> icons/twitter}}</a>
-                                    {{/if}}
-                                    {{#if facebook}}
-                                        <a class="gh-author-social-link" href="{{social_url type="facebook"}}" target="_blank" rel="noopener">{{> icons/facebook}}</a>
-                                    {{/if}}
-                                    {{#if linkedin}}
-                                        <a class="gh-author-social-link" href="{{social_url type="linkedin"}}" target="_blank" rel="noopener">{{> icons/linkedin}}</a>
-                                    {{/if}}
-                                    {{#if bluesky}}
-                                        <a class="gh-author-social-link" href="{{social_url type="bluesky"}}" target="_blank" rel="noopener">{{> icons/bluesky}}</a>
-                                    {{/if}}
-                                    {{#if threads}}
-                                        <a class="gh-author-social-link" href="{{social_url type="threads"}}" target="_blank" rel="noopener">{{> icons/threads}}</a>
-                                    {{/if}}
-                                    {{#if mastodon}}
-                                        <a class="gh-author-social-link" href="{{social_url type="mastodon"}}" target="_blank" rel="noopener">{{> icons/mastodon}}</a>
-                                    {{/if}}
-                                    {{#if tiktok}}
-                                        <a class="gh-author-social-link" href="{{social_url type="tiktok"}}" target="_blank" rel="noopener">{{> icons/tiktok}}</a>
-                                    {{/if}}
-                                    {{#if youtube}}
-                                        <a class="gh-author-social-link" href="{{social_url type="youtube"}}" target="_blank" rel="noopener">{{> icons/youtube}}</a>
-                                    {{/if}}
-                                    {{#if instagram}}
-                                        <a class="gh-author-social-link" href="{{social_url type="instagram"}}" target="_blank" rel="noopener">{{> icons/instagram}}</a>
-                                    {{/if}}
-                                </div>
-                            </div>
+                            {{> "author-card" }}
                         {{/foreach}}
                     </div>
                 {{/get}}
