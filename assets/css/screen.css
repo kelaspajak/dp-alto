@@ -5,6 +5,8 @@
 @import "site/switch.css";
 @import "site/layout.css";
 @import "site/term.css";
+/* @import "site/hero.css"; */
+@import "site/footer.css";
 @import "blog/post.css";
 @import "blog/pagination.css";
 @import "blog/single.css";

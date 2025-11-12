@@ -1,0 +1,208 @@
+/* New footer styles based on TailwindCSS */
+.new-footer {
+    border-top: 1px solid #e5e7eb; /* Assuming border-border */
+    padding-left: 1rem; /* px-4 */
+    padding-right: 1rem; /* px-4 */
+    padding-top: 2.5rem; /* pt-10 */
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.dark-mode .new-footer {
+    background-color: #0C0C0C;
+    border-top-color: #333; /* Dark mode border */
+}
+
+.new-footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e5e7eb; /* Assuming border-border */
+    padding-bottom: 2.5rem; /* pb-10 */
+    margin-bottom: 3rem; /* mb-12 */
+}
+
+.dark-mode .footer-top {
+    border-bottom-color: #333;
+}
+
+.footer-logo img {
+    height: 40px; /* Example size */
+}
+
+.footer-tagline {
+    font-weight: 400;
+    text-align: right;
+}
+
+.footer-main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.footer-nav-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    line-height: 2rem; /* leading-8 */
+}
+
+.footer-nav-wrapper > div {
+    margin-bottom: 2rem; /* space-y-8 */
+}
+
+.footer-nav-heading {
+    font-weight: 500; /* font-medium */
+    margin-bottom: 3rem;
+}
+
+.footer-nav-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 3rem;
+}
+
+.footer-nav-list li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-nav-list li a {
+    color: #878787;
+    transition: color 0.2s ease-in-out;
+    text-decoration: none;
+}
+
+.footer-nav-list li a:hover {
+    color: #111;
+}
+
+.dark-mode .footer-nav-list li a:hover {
+    color: #fff;
+}
+
+.footer-actions {
+    margin-top: 2rem; /* mt-8 */
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-actions-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-actions-top {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 2rem; /* mb-8 */
+}
+
+.footer-actions-top > * + * {
+    margin-top: 1.5rem; /* space-y-6 */
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links svg {
+    width: 24px;
+    height: 24px;
+}
+
+.subscribe-input-placeholder form {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.subscribe-input-placeholder input {
+    border: none;
+    padding: 0.5rem;
+    flex-grow: 1;
+}
+
+.subscribe-input-placeholder button {
+    background: #333;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+.footer-background-text {
+    color: #F4F4F3;
+    font-size: 20vw; /* Responsive font size */
+    font-weight: bold;
+    line-height: 1;
+    text-align: center;
+    pointer-events: none;
+    user-select: none;
+    overflow: hidden;
+display: -webkit-box;
+-webkit-box-orient: vertical;
+}
+
+.dark-mode .footer-background-text {
+    color: #161616;
+}
+
+/* Media Queries for md breakpoint (e.g., 768px) */
+@media (min-width: 768px) {
+    .new-footer {
+        padding-left: 1.5rem; /* md:px-6 */
+        padding-right: 1.5rem; /* md:px-6 */
+        padding-top: 4rem; /* md:pt-16 */
+        max-height: 820px;
+    }
+    .footer-top {
+        padding-bottom: 4rem; /* md:pb-16 */
+    }
+    .footer-logo {
+        transform: scale(1);
+        margin-left: 0;
+    }
+    .footer-tagline {
+        font-size: 1.5rem; /* md:text-2xl */
+    }
+    .footer-main {
+        flex-direction: row;
+    }
+    .footer-nav-wrapper {
+        flex-direction: row;
+        width: 50%; /* md:w-6/12 */
+    }
+    .footer-nav-wrapper > div {
+        margin-bottom: 0;
+    }
+    .footer-actions {
+        width: 50%; /* md:w-6/12 */
+        margin-top: 0; /* md:mt-0 */
+        justify-content: flex-end; /* md:justify-end */
+        display: flex;
+    }
+    .footer-actions-content {
+        align-items: flex-end;
+    }
+    .footer-actions-top {
+        flex-direction: row;
+        align-items: center;
+    }
+    .footer-actions-top > * + * {
+        margin-top: 0;
+        margin-left: 1.5rem; /* space-x-6 equivalent */
+    }
+}
+
+.hidden {
+    display: none;
+}

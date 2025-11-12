@@ -65,6 +65,12 @@
         }
     }
 
+    @media (min-width: 48rem) {
+        .author-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr)); /* >= 48rem: 3 columns */
+        }
+    }
+
     .author-card {
         border: 1px solid #eee;
         padding: 20px;
@@ -80,7 +86,7 @@
 
 <div class="consultant-wrapper gh-outer">
     <header class="gh-article-header hero">
-                    <h1 class="gh-article-title">Partner with Diskusi Pajak</h1>
+                    <h1 class="gh-article-title">Our Consultants</h1>
     </header>
 
     <aside class="consultant-sidebar">
