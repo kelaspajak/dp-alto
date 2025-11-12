@@ -2,12 +2,10 @@
 
 <div class="content-area">
 <main class="site-main">
-
-    {{#author}}
         <section class="term gh-outer">
             {{#if profile_image}}
                 <div class="term-image-container u-placeholder">
-                    <img class="author-image u-object-fit" src="{{img_url profile_image size="xs"}}"  format="webp" alt="{{name}}" loading="lazy">
+                    <img class="author-image u-object-fit" src="{{img_url profile_image size="xs"}}" alt="{{name}}" loading="lazy">
                 </div>
             {{/if}}
             <div class="term-wrapper">
@@ -52,7 +50,7 @@
                     
                 </div>
         </section>
-    {{/author}}
+
 
 {{#get "posts" filter="primary_tag:layanan" include="tags,authors" as |posts|}}
 
