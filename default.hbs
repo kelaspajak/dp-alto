@@ -19,9 +19,9 @@
                 <div class="gh-head-brand-wrapper">
                     <a class="gh-head-logo" href="{{@site.url}}">
                         {{#if @site.logo}}
-                            <img src="{{@site.logo}}" alt="{{@site.title}}">
+                            <img src="{{@site.logo}}" alt="{{@site.title}}"  format="webp">
                             {{#if @custom.white_logo_for_dark_mode}}
-                                <img src="{{img_url @custom.white_logo_for_dark_mode}}" alt="{{@site.title}}">
+                                <img src="{{img_url @custom.white_logo_for_dark_mode}}" alt="{{@site.title}} format="webp" ">
                             {{/if}}
                         {{else}}
                             {{@site.title}}
@@ -66,6 +66,10 @@
     </header>
 
     {{#is "home"}}
+        <div class="hero-section">
+    <h2 class="hero-title">Dokumentasi<br />• Diskusi •<br />Kolaborasi</h2>
+</div>
+
         {{#if @custom.show_featured_posts}}
             {{> "featured"}}
         {{/if}}

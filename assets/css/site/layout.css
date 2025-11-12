@@ -12,3 +12,43 @@
 .page-template .site-content {
     padding-top: 0;
 }
+
+/* hero */
+
+.hero-section {
+    text-align: center;
+    padding: 20px 0; /* Adjust padding as needed */
+}
+
+.hero-title {
+    font-size: clamp(3.125rem, 1.042rem + 10.42vw, 9.375rem); /* Adjust font size as needed */
+    line-height: normal;
+    text-align: center;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+    .hero-title {
+        background-image: radial-gradient(
+            circle at 0.4px 0.2px,
+            #fff 1px,
+            transparent 0
+        );
+        background-size: 5px 5px;
+    }
+}
+
+/* Light mode styles */
+@media (prefers-color-scheme: light) {
+    .hero-title {
+        background-image: radial-gradient(
+            circle at 0.4px 0.2px,
+            #000 1px,
+            transparent 0
+        );
+        background-size: 5px 5px;
+    }
+}
